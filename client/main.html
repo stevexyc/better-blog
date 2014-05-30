@@ -1,0 +1,67 @@
+<head>
+	<title>writing-tool-with-medium-js</title>
+</head>
+
+<body>
+
+</body>
+
+<template name="articleshow">
+	<div class="app-wrap {{state}}">
+		{{> articlelist}}
+		<div class="container articleshow">
+			<div class="menu-panel">
+				{{#if isEditing}}
+					<button id="save-button">Save</button>
+				{{else}}
+					<button id="edit-button">Edit</button>
+				{{/if}}
+				<a href="/posts"><button id="menu-button">Menu</button></a>
+			</div>
+			<div class="header" style="">
+				{{#if isEditing}}
+					<h1><input type="text" value="{{title}}" id="posttitle"></h1>
+				{{else}}
+					<h1>{{title}}</h1>
+				{{/if}}
+			</div>
+			<div class="sub-panel">
+				<span class="text-muted">{{zdate}}</span>
+			</div>
+			<div class="editable" id="posttext" data-placeholder=" ">
+				{{{text}}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="articlelist">
+	<div class="articlelist">
+		<div class="articlelist-wrap">
+			<div class="profile-pane">
+				<h3>Steve X Chen</h3>
+			</div>
+			<div class="article-pane">
+				<div class="menu-panel">
+					<button id="newpost-button">new</button>
+				</div>
+				<div class="new-list-item" id="newpost-item">
+					<span class="articledate">
+						{{today}}
+					</span>
+					<h1>
+						<input type="text">
+					</h1>
+				</div>
+				{{#each article}}
+					<div class="list-item">
+						<span class="articledate">
+							{{zdate}}
+						</span>
+						<h1>{{title}}</h1>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</template>
